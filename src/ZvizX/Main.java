@@ -55,7 +55,7 @@ public class Main extends PApplet {
         peasyCam = new PeasyCam(this, 100);
         verletPhysics = new VerletPhysics();
         verletPhysics.setWorldBounds(new AABB(new Vec3D(), 180));
-        particles = new ArrayList<Particles>();
+        particles = new ArrayList<>();
 
         int particlesAmount = 100;
         for (int i = 0; i < particlesAmount; i++) {
@@ -197,7 +197,7 @@ public class Main extends PApplet {
     }
 
     public class Cluster {
-        ArrayList<Node> nodes = new ArrayList<Node>();
+        ArrayList<Node> nodes = new ArrayList<>();
         float diameter;
 
         Cluster(int amount, float diameter, Vec3D center) {
@@ -464,8 +464,7 @@ public class Main extends PApplet {
             if (min.y > y) return false;
             if (max.y < y) return false;
             if (min.z > z) return false;
-            if (max.z < z) return false;
-            return true;
+            return max.z >= z;
         }
     }
 
@@ -578,7 +577,7 @@ public class Main extends PApplet {
                 "GHOST LOOP",
                 "MR PRECISE",
         };
-        ArrayList<String> subText = new ArrayList<String>();
+        ArrayList<String> subText = new ArrayList<>();
         int writerIndex;
 
         AnimatedText(Vec3D location) {
@@ -626,8 +625,8 @@ public class Main extends PApplet {
         HE_Mesh createHemeshFromString(String s) {
             RMesh rMesh = rFont.toGroup(s).toMesh();
             rMesh.translate(-rMesh.getWidth() / 2, rMesh.getHeight() / 2);
-            ArrayList<WB_Triangle> wb_Triangles = new ArrayList<WB_Triangle>();
-            ArrayList<WB_Triangle> wb_TrianglesFlipped = new ArrayList<WB_Triangle>();
+            ArrayList<WB_Triangle> wb_Triangles = new ArrayList<>();
+            ArrayList<WB_Triangle> wb_TrianglesFlipped = new ArrayList<>();
             RPoint[] rPoints;
             WB_Triangle wb_Triangle, wb_TriangleFlipped;
             WB_Point a, b, c;
@@ -659,14 +658,14 @@ public class Main extends PApplet {
         void colorFaces(HE_Mesh he_Mesh) {
             colorMode(HSB, 1);
             for (HE_Face he_Face : he_Mesh.getFacesAsArray()) {
-                WB_Point c = he_Face.getFaceCenter();
+                WB_Point c = (WB_Point) he_Face.getFaceCenter();
                 he_Face.setLabel(color(map(c.xf() + c.yf(), -500, 500, 0, 1), 1, 1));
             }
             colorMode(RGB, 255);
         }
 
         void generateMeshes(HE_Mesh he_Mesh) {
-            he_Meshes = new ArrayList<HE_Mesh>();
+            he_Meshes = new ArrayList<>();
             he_Meshes.add(he_Mesh);
             for (int i = 0; i < numIterations; i++) {
                 he_Meshes = slice(he_Meshes, initialOffset);
@@ -674,22 +673,22 @@ public class Main extends PApplet {
         }
 
         ArrayList<HE_Mesh> slice(ArrayList<HE_Mesh> he_Meshes, float offset) {
-            ArrayList<HE_Mesh> he_MeshesNew = new ArrayList<HE_Mesh>();
+            ArrayList<HE_Mesh> he_MeshesNew = new ArrayList<>();
             for (HE_Mesh he_Mesh : he_Meshes) {
-                WB_Point center = he_Mesh.getCenter();
+                WB_Point center = (WB_Point) he_Mesh.getCenter();
                 HEMC_SplitMesh hemc_SplitMesh = new HEMC_SplitMesh();
                 hemc_SplitMesh.setMesh(he_Mesh);
                 hemc_SplitMesh.setOffset(offset);
                 hemc_SplitMesh.setPlane(new WB_Plane(center.xf(), center.xf(), center.xf(), random(-1, 1), random(-1, 1), random(-1, 1)));
-                HE_Mesh[] cells = hemc_SplitMesh.create();
-                java.util.Collections.addAll(he_MeshesNew, cells);
+                HE_MeshCollection cells = hemc_SplitMesh.create();
+                //java.util.Collections.addAll(he_MeshesNew, cells);
             }
             return he_MeshesNew;
         }
 
         void move(ArrayList<HE_Mesh> he_Meshes, float offset) {
             for (HE_Mesh he_Mesh : he_Meshes) {
-                WB_Point center = he_Mesh.getCenter();
+                WB_Point center = (WB_Point) he_Mesh.getCenter();
                 center.normalizeSelf();
                 center.mulSelf(offset);
                 he_Mesh.move(center);
@@ -704,7 +703,7 @@ public class Main extends PApplet {
             WB_Vector normal = null;
             WB_Vector[] vertexNormals = null;
             if (perVertexNormals) {
-                vertexNormals = he_Mesh.getVertexNormals();
+                vertexNormals = (WB_Vector[]) he_Mesh.getVertexNormals();
             }
 
             PShape pShape = createShape();
@@ -713,7 +712,7 @@ public class Main extends PApplet {
             pShape.strokeWeight(0.5f);
             for (int i = 0; i < facesHemesh.length; i++) {
                 if (!perVertexNormals) {
-                    normal = faceArray[i].getFaceNormal();
+                    normal = (WB_Vector) faceArray[i].getFaceNormal();
                 }
                 pShape.fill(faceArray[i].getLabel());
                 for (int j = 0; j < 3; j++) {
