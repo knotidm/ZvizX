@@ -20,5 +20,13 @@
     <orderEntry type="library" name="sound" level="application" />
     <orderEntry type="library" name="toxiclibs" level="application" />
     <orderEntry type="library" name="video" level="application" />
+    <orderEntry type="library" name="gicentreUtils" level="application" />
+    <orderEntry type="library" name="httprequests_processing" level="application" />
+    <orderEntry type="library" name="webSockets" level="application" />
+    <orderEntry type="library" name="dxf" level="application" />
+    <orderEntry type="library" name="net" level="application" />
+    <orderEntry type="library" name="pdf" level="application" />
+    <orderEntry type="library" name="serial" level="application" />
+    <orderEntry type="library" name="svg" level="application" />
   </component>
 </module>
