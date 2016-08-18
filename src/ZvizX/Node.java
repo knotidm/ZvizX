@@ -5,8 +5,8 @@ import processing.core.PConstants;
 import toxi.geom.Vec3D;
 import toxi.physics.VerletParticle;
 
-public class Node extends VerletParticle {
-    public PApplet pApplet;
+class Node extends VerletParticle {
+    private PApplet pApplet;
     //public float area = pApplet.mouseX * 0.01f;
 
     public Node(PApplet pApplet, Vec3D location) {

@@ -7,9 +7,9 @@ import toxi.physics.VerletSpring;
 
 import java.util.ArrayList;
 
-public class Cluster {
-    public  PApplet pApplet;
-    public  ArrayList<Node> nodes = new ArrayList<>();
+class Cluster {
+    private PApplet pApplet;
+    private ArrayList<Node> nodes = new ArrayList<>();
 
     public Cluster(PApplet pApplet, VerletPhysics verletPhysics, int amount, float diameter, Vec3D center) {
         this.pApplet = pApplet;

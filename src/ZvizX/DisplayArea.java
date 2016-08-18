@@ -4,10 +4,10 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PVector;
 
-public class DisplayArea {
-    public  PApplet pApplet;
-    public  PVector min = new PVector();
-    public  PVector max = new PVector();
+class DisplayArea {
+    private PApplet pApplet;
+    private PVector min = new PVector();
+    private PVector max = new PVector();
 
     public DisplayArea() {
         min.set(0, 0, 0);
@@ -27,7 +27,7 @@ public class DisplayArea {
         addPoint(p2);
     }
 
-    public void reset() {
+    private void reset() {
         min.x = PConstants.MAX_FLOAT;
         min.y = PConstants.MAX_FLOAT;
         min.z = PConstants.MAX_FLOAT;
@@ -36,11 +36,11 @@ public class DisplayArea {
         max.z = PConstants.MIN_FLOAT;
     }
 
-    public void addPoint(PVector point) {
+    private void addPoint(PVector point) {
         addPoint(point.x, point.y, point.z);
     }
 
-    public void addPoint(float x, float y, float z) {
+    private void addPoint(float x, float y, float z) {
         if (x < min.x) min.x = x;
         if (x > max.x) max.x = x;
         if (y < min.y) min.y = y;
@@ -82,7 +82,7 @@ public class DisplayArea {
         return isColliding(p.x, p.y, p.z);
     }
 
-    public  boolean isColliding(float x, float y, float z) {
+    private boolean isColliding(float x, float y, float z) {
         return min.x <= x && max.x >= x && min.y <= y && max.y >= y && min.z <= z && max.z >= z;
     }
 }

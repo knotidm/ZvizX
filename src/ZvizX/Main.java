@@ -17,32 +17,32 @@ import wblut.processing.WB_Render;
 import java.util.ArrayList;
 
 public class Main extends PApplet {
-    PeasyCam peasyCam;
-    VerletPhysics verletPhysics;
-    ArrayList<Particle> particles;
-    Cluster cluster;
-    AnimatedText animatedText;
-    PFont pFont;
-    PShape pShape;
-    RFont rFont;
-    WB_Render wb_Render;
-    HE_Mesh he_Mesh;
-    ArrayList<HE_Mesh> he_Meshes;
+    private VerletPhysics verletPhysics;
+    private ArrayList<Particle> particles;
+    private Cluster cluster;
+    private AnimatedText animatedText;
+    private WB_Render wb_Render;
+    private HE_Mesh he_Mesh;
+    private ArrayList<HE_Mesh> he_Meshes;
     String input = "TYPE";
-    Typography3D typography3D;
-    DisplayArea area;
+    private Typography3D typography3D;
 
-    int numIterations = 9;
-    float initialOffset = 0;
-    float moveOffset = 0.35f;
-    boolean exploding;
-    int background;
-    float separate;
-    float cohesion;
-    float align;
-    int minDistance;
-    float speedX, speedY, speedZ, accelerationX, accelerationY, accelerationZ, gravityX, gravityY, gravityZ;
-    int textIndex = 5;
+    private boolean exploding;
+    private int background;
+    private float separate;
+    private float cohesion;
+    private float align;
+    private int minDistance;
+    private float speedX;
+    private float speedY;
+    private float speedZ;
+    private float accelerationX;
+    private float accelerationY;
+    private float accelerationZ;
+    private float gravityX;
+    private float gravityY;
+    private float gravityZ;
+    private int textIndex = 5;
 
     static public void main(String args[]) {
         PApplet.main(new String[]{"ZvizX.Main"});
@@ -54,7 +54,7 @@ public class Main extends PApplet {
     }
 
     public void setup() {
-        peasyCam = new PeasyCam(this, 100);
+        new PeasyCam(this, 100);
         verletPhysics = new VerletPhysics();
         verletPhysics.setWorldBounds(new AABB(new Vec3D(), 180));
         particles = new ArrayList<>();
@@ -66,17 +66,19 @@ public class Main extends PApplet {
         }
 
         cluster = new Cluster(this, verletPhysics, 4, 200, new Vec3D());
-        pFont = createFont("Penguin Sans", 32, true);
+        PFont pFont = createFont("Penguin Sans", 32, true);
         animatedText = new AnimatedText(this, new Vec3D(), new Vec3D(), new Vec3D(), new Vec3D(), pFont, textIndex);
 
         RG.init(this);
         RCommand.setSegmentator(RCommand.UNIFORMSTEP);
         RCommand.setSegmentStep(2);
-        rFont = new RFont("Fonts/PenguinSans.ttf", 350);
+        RFont rFont = new RFont("Fonts/PenguinSans.ttf", 350);
         wb_Render = new WB_Render(this);
+        int numIterations = 9;
+        float initialOffset = 0;
         typography3D = new Typography3D(this, rFont, he_Meshes, numIterations, initialOffset);
 
-        area = new DisplayArea(this, 0, -300, -15, 600, 300, 15); // rozmiar obszaru wyświetlania x1 y1 z1 x2 y2 z2
+        DisplayArea area = new DisplayArea(this, 0, -300, -15, 600, 300, 15);
     }
 
     public void draw() {
@@ -91,9 +93,10 @@ public class Main extends PApplet {
         cluster.showInsideShape();
         cluster.showText(animatedText);
 
-        pShape = typography3D.createPShapeFromHemesh(he_Mesh, false);
+        PShape pShape = typography3D.createPShapeFromHemesh(he_Mesh, false);
         shape(pShape);
 
+        float moveOffset = 0.35f;
         if (exploding) typography3D.move(he_Meshes, moveOffset);
 
         noStroke();

@@ -8,10 +8,10 @@ import toxi.physics.VerletParticle;
 
 import java.util.ArrayList;
 
-public class AnimatedText extends Particle {
-    public PApplet pApplet;
-    public PFont pFont;
-    public int textIndex;
+class AnimatedText extends Particle {
+    private PApplet pApplet;
+    private PFont pFont;
+    private int textIndex;
     public String[] textArray = {
             "CRL STUDIOS",
             "THE FOURTH WAVELENGTH (FOUND)",
@@ -42,8 +42,8 @@ public class AnimatedText extends Particle {
             "GHOST LOOP",
             "MR PRECISE",
     };
-    public ArrayList<String> subText = new ArrayList<>();
-    public int writerIndex;
+    private ArrayList<String> subText = new ArrayList<>();
+    private int writerIndex;
 
     public AnimatedText(PApplet pApplet, Vec3D location, Vec3D acceleration, Vec3D speed, Vec3D gravity, PFont pFont, int textIndex) {
         super(pApplet, location, acceleration, speed, gravity);

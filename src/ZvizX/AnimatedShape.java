@@ -7,11 +7,11 @@ import saito.objloader.Face;
 import saito.objloader.OBJModel;
 import saito.objloader.Segment;
 
-public class AnimatedShape {
-    public PApplet pApplet;
-    public OBJModel model;
-    public PVector position = new PVector(0, 0, 0);
-    public PVector direction = new PVector(0, 0, 5); // kierunek i szybkość poruszania się obszaru wyświetlania x y z
+class AnimatedShape {
+    private PApplet pApplet;
+    private OBJModel model;
+    private PVector position = new PVector(0, 0, 0);
+    private PVector direction = new PVector(0, 0, 5); // kierunek i szybkość poruszania się obszaru wyświetlania x y z
 
     public AnimatedShape(PApplet pApplet, String s) {
         this.pApplet = pApplet;
@@ -20,7 +20,7 @@ public class AnimatedShape {
         model.translateToCenter();
     }
 
-    public void changeMode() {
+    private void changeMode() {
         if (pApplet.key == '1') {
             pApplet.noFill();
             model.shapeMode(PConstants.POINTS);
@@ -45,11 +45,11 @@ public class AnimatedShape {
             Face[] faces = segment.getFaces();
             pApplet.beginShape(PConstants.QUADS);
             for (int i = 0; i < faces.length; i++) {
-                PVector[] v = faces[i].getVertices();
-                PVector n = faces[i].getNormal();
+                PVector[] vertices = faces[i].getVertices();
+                PVector normal = faces[i].getNormal();
                 float nor = PApplet.abs(PApplet.sin(PApplet.radians((pApplet.frameCount + i))) * 100);
-                for (int k = 0; k < v.length; k++) {
-                    pApplet.vertex(v[k].x + (n.x * nor), v[k].y + (n.y * nor), v[k].z + (n.z * nor));
+                for (PVector vertex : vertices) {
+                    pApplet.vertex(vertex.x + (normal.x * nor), vertex.y + (normal.y * nor), vertex.z + (normal.z * nor));
                 }
             }
             pApplet.endShape();
@@ -70,11 +70,10 @@ public class AnimatedShape {
             Segment segment = model.getSegment(j);
             Face[] faces = segment.getFaces();
             pApplet.beginShape(PConstants.QUADS);
-            for (int i = 0; i < faces.length; i++) {
-                Face f = faces[i];
-                if (area.isColliding(f.getCenter())) {
-                    PVector[] v = f.getVertices();
-                    PVector[] n = f.getNormals();
+            for (Face face : faces) {
+                if (area.isColliding(face.getCenter())) {
+                    PVector[] v = face.getVertices();
+                    PVector[] n = face.getNormals();
                     for (int k = 0; k < v.length; k++) {
                         pApplet.normal(n[k].x, n[k].y, n[k].z);
                         pApplet.vertex(v[k].x, v[k].y, v[k].z);

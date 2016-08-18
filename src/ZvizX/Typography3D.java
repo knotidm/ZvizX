@@ -14,12 +14,12 @@ import wblut.hemesh.*;
 
 import java.util.ArrayList;
 
-public class Typography3D {
-    public PApplet pApplet;
-    public  RFont rFont;
-    public  ArrayList<HE_Mesh> he_Meshes;
-    public  int numIterations;
-    public  float initialOffset;
+class Typography3D {
+    private PApplet pApplet;
+    private RFont rFont;
+    private ArrayList<HE_Mesh> he_Meshes;
+    private int numIterations;
+    private float initialOffset;
 
     public Typography3D(PApplet pApplet, RFont rFont, ArrayList<HE_Mesh> he_Meshes, int numIterations, float initialOffset) {
         this.pApplet = pApplet;
@@ -79,7 +79,7 @@ public class Typography3D {
         }
     }
 
-    public ArrayList<HE_Mesh> slice(ArrayList<HE_Mesh> he_Meshes, float offset) {
+    private ArrayList<HE_Mesh> slice(ArrayList<HE_Mesh> he_Meshes, float offset) {
         ArrayList<HE_Mesh> he_MeshesNew = new ArrayList<>();
         for (HE_Mesh he_Mesh : he_Meshes) {
             WB_Point center = (WB_Point) he_Mesh.getCenter();

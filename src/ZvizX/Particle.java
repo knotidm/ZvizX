@@ -6,12 +6,12 @@ import toxi.geom.Vec3D;
 
 import java.util.ArrayList;
 
-public class Particle {
-    public  PApplet pApplet;
-    public Vec3D location;
-    public Vec3D acceleration;
-    public Vec3D speed;
-    public Vec3D gravity;
+class Particle {
+    private PApplet pApplet;
+    Vec3D location;
+    private Vec3D acceleration;
+    private Vec3D speed;
+    private Vec3D gravity;
 
     public Particle(PApplet pApplet, Vec3D location, Vec3D acceleration, Vec3D speed, Vec3D gravity) {
         this.pApplet = pApplet;

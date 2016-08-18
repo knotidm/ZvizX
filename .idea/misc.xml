@@ -39,7 +39,41 @@
     </properties>
   </component>
   <component name="EntryPointsManager">
-    <entry_points version="2.0" />
+    <entry_points version="2.0">
+      <entry_point TYPE="method" FQNAME="ZvizX.AnimatedShape AnimatedShape(processing.core.PApplet pApplet, java.lang.String s)" />
+      <entry_point TYPE="class" FQNAME="ZvizX.AnimatedShape" />
+      <entry_point TYPE="method" FQNAME="ZvizX.AnimatedText AnimatedText(processing.core.PApplet pApplet, toxi.geom.Vec3D location, toxi.geom.Vec3D acceleration, toxi.geom.Vec3D speed, toxi.geom.Vec3D gravity, processing.core.PFont pFont, int textIndex)" />
+      <entry_point TYPE="class" FQNAME="ZvizX.AnimatedText" />
+      <entry_point TYPE="method" FQNAME="ZvizX.Cluster Cluster(processing.core.PApplet pApplet, toxi.physics.VerletPhysics verletPhysics, int amount, float diameter, toxi.geom.Vec3D center)" />
+      <entry_point TYPE="class" FQNAME="ZvizX.Cluster" />
+      <entry_point TYPE="method" FQNAME="ZvizX.DisplayArea DisplayArea(processing.core.PVector p1, processing.core.PVector p2)" />
+      <entry_point TYPE="method" FQNAME="ZvizX.DisplayArea DisplayArea(processing.core.PApplet pApplet, float x1, float y1, float z1, float x2, float y2, float z2)" />
+      <entry_point TYPE="method" FQNAME="ZvizX.DisplayArea DisplayArea()" />
+      <entry_point TYPE="class" FQNAME="ZvizX.DisplayArea" />
+      <entry_point TYPE="method" FQNAME="ZvizX.Main void main(java.lang.String[] args)" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main gravityZ" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main gravityY" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main gravityX" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main accelerationZ" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main accelerationY" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main accelerationX" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main speedZ" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main speedY" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main speedX" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main minDistance" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main align" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main cohesion" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main separate" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main background" />
+      <entry_point TYPE="field" FQNAME="ZvizX.Main input" />
+      <entry_point TYPE="implicit.constructor" FQNAME="ZvizX.Main" />
+      <entry_point TYPE="method" FQNAME="ZvizX.Node Node(processing.core.PApplet pApplet, toxi.geom.Vec3D location)" />
+      <entry_point TYPE="class" FQNAME="ZvizX.Node" />
+      <entry_point TYPE="method" FQNAME="ZvizX.Particle Particle(processing.core.PApplet pApplet, toxi.geom.Vec3D location, toxi.geom.Vec3D acceleration, toxi.geom.Vec3D speed, toxi.geom.Vec3D gravity)" />
+      <entry_point TYPE="class" FQNAME="ZvizX.Particle" />
+      <entry_point TYPE="method" FQNAME="ZvizX.Typography3D Typography3D(processing.core.PApplet pApplet, geomerative.RFont rFont, java.util.ArrayList&lt;wblut.hemesh.HE_Mesh&gt; he_Meshes, int numIterations, float initialOffset)" />
+      <entry_point TYPE="class" FQNAME="ZvizX.Typography3D" />
+    </entry_points>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
